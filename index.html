@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>XBlocks | introduction and tutorial</title>
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="./vendor/quicksand/quicksand.css" rel="stylesheet" type="text/css" />
+
+    <link href="./vendor/impress.css" rel="stylesheet" type="text/css" />
+    <link href="./opencraft.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="./vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendor/jmpress.custom.js"></script>
+  </head>
+
+  <body>
+
+    <div id="impress" class="impress-not-supported">
+
+      <!-- ########################################################################################
+           ## Home                                                                               ##
+           ######################################################################################## -->
+
+      <div id="firstpage" class="step" data-x="0" data-y="0">
+        <h1>XBlocks</h1>
+        <h2>Introduction and Tutorial</h2>
+        <div class="authors">Cale Pennington (edX)<br />Xavier Antoviaque (OpenCraft)</div>
+      </div>
+      
+      <!-- ########################################################################################
+           ## Intro                                                                              ##
+           ######################################################################################## -->
+
+      <div id="intro" class="step" data-x="0" data-y="10000">
+        <h1>XBlock?</h1>
+        <ul>
+          <li>TODO (Cale)</li>
+          <li>Give a high-level, not-too-technical overview of the XBlock principles</li>
+        </ul>
+      </div>
+
+      <!-- ########################################################################################
+           ## Examples                                                                           ##
+           ######################################################################################## -->
+
+      <div id="examples" class="step" data-x="0" data-y="20000">
+        <h1>Examples</h1>
+        <ul>
+          <li>TODO (Xavier)</li>
+          <li>Illustrate this with a few examples of XBlocks that currently exist</li>
+        </ul>
+      </div>
+
+      <!-- ########################################################################################
+           ## Tutorial                                                                           ##
+           ######################################################################################## -->
+
+      <div id="tutorial" class="step" data-x="0" data-y="30000">
+        <h1>(Short) Tutorial</h1>
+
+        <img src="tutorial/simplevideo_finished.png" />
+
+<xmp><vertical_demo>
+  <simplevideo href="https://vimeo.com/46100581" maxwidth="800" />
+  <html_demo>
+    <div>Rate the video:</div>
+  </html_demo>
+  <thumbs />
+</vertical_demo>
+</xmp>
+
+        <div>https://antoviaque.org/docs/edx/xblock/tutorial.html</div>
+      </div>
+
+      <!-- ## Installation ######################################################################## -->
+
+      <div id="tutorial-installation" class="step" data-x="10000" data-y="30000">
+        <h1>Installation</h1>
+
+<xmp>$ mkvirtualenv xblock-sdk
+$ git clone https://github.com/edx/xblock-sdk.git
+$ cd xblock-sdk
+$ pip install -r requirements.txt
+$ pip install -r test-requirements.txt
+$ pip install -e .
+$ python manage.py syncdb
+$ python manage.py runserver</xmp>
+        <img src="tutorial/workbench_home.png" />
+      </div>
+
+      <!-- ## XBlock Creation ##################################################################### -->
+
+      <div id="tutorial-new-xblock" class="step" data-x="20000" data-y="30000">
+        <h1>XBlock Creation</h1>
+
+<xmp>$ ./xblock-sdk/script/startnew.py
+This script will create a new XBlock project.
+
+You will be prompted for two pieces of information:
+
+* short_name: a single word, all lower-case, for directory and file names.
+  For a hologram 3-D XBlock, you might choose "holo3d".
+
+* class_name: a valid Python class name.  It's best if this ends with "XBlock",
+  so for our hologram XBlock, you might choose "Hologram3dXBlock".
+
+Once you specify those two words, a directory will be created in the current
+directory containing the new project.
+
+If you don't want to create the project here, or you enter a name incorrectly,
+just type Ctrl-C to stop this script.  If you don't want the resulting project,
+just delete the directory it created.
+
+
+short_name (default is "")? simplevideo
+class_name (default is "MyXBlock")? SimpleVideoBlock</xmp>
+      </div>
+      
+      <!-- ## Registering ######################################################################### -->
+
+      <div id="tutorial-registering" class="step" data-x="30000" data-y="30000">
+        <h1>Registering</h1>
+
+        <div>setup.py:</div>
+
+<xmp>from setuptools import setup
+
+setup(
+    name='xblock-simplevideo',
+    version='0.1',
+    description='SimpleVideo XBlock Tutorial Sample',
+    py_modules=['simplevideo'],
+    install_requires=['XBlock'],
+    entry_points={
+        'xblock.v1': [
+            'simplevideo = simplevideo:SimpleVideoBlock',
+        ]
+    }
+)</xmp>
+
+<xmp>pip install -e .
+(or in requirements.txt)</xmp>
+      </div>
+
+      <!-- ## Fields ############################################################################## -->
+
+      <div id="tutorial-fields" class="step" data-x="40000" data-y="30000">
+        <h1>Fields</h1>
+
+        <xmp><simplevideo href="https://vimeo.com/46100581" maxwidth="800" maxheight="450" /></xmp>
+
+<xmp>from xblock.core import XBlock
+from xblock.fields import Scope, Integer, String
+
+class SimpleVideoBlock(XBlock):
+    """
+    An XBlock providing oEmbed capabilities for video
+    """
+
+    href = String(help="URL of the video page at the provider", default=None, scope=Scope.content)
+    maxwidth = Integer(help="Maximum width of the video", default=800, scope=Scope.content)
+    maxheight = Integer(help="Maximum height of the video", default=450, scope=Scope.content)</xmp>
+
+      </div>
+
+      <!-- ## student_view() ###################################################################### -->
+
+      <div id="tutorial-student-view" class="step" data-x="50000" data-y="30000">
+        <h1>student_view()</h1>
+
+<xmp>def student_view(self, context):
+    provider, embed_code = self.get_embed_code_for_url(self.href)
+
+    html_str = pkg_resources.resource_string(__name__, "static/html/simplevideo.html")
+    frag = Fragment(unicode(html_str).format(self=self, embed_code=embed_code))
+
+    return frag</xmp>
+
+    <div>simplevideo/static/html/simplevideo.html:</div>
+<xmp><div class="simplevideo">
+  {embed_code}
+</div></xmp>
+      </div>
+      
+      <!-- ## CSS ################################################################################# -->
+
+      <div id="tutorial-css" class="step" data-x="60000" data-y="30000">
+        <h1>CSS</h1>
+
+<xmp>def student_view(self, context):
+    [...]
+    frag = Fragment(unicode(html_str).format(self=self, embed_code=embed_code))
+
+    css_str = pkg_resources.resource_string(__name__, "static/css/simplevideo.css")
+    frag.add_css(unicode(css_str))</xmp>
+      </div>
+      
+      <!-- ## JS ################################################################################## -->
+
+      <div id="tutorial-js" class="step" data-x="70000" data-y="30000">
+        <h1>JS</h1>
+
+<xmp>def student_view(self, context):
+    [...]
+    js_str = pkg_resources.resource_string(__name__, "static/js/lib/froogaloop.min.js")
+    frag.add_javascript(unicode(js_str))
+    js_str = pkg_resources.resource_string(__name__, "static/js/src/simplevideo.js")
+    frag.add_javascript(unicode(js_str))
+    frag.initialize_js('SimpleVideoBlock')</xmp>
+
+        <div>simplevideo.js:</div>
+<xmp>function SimpleVideoBlock(runtime, element) {
+   var player = $f($('.simplevideo iframe'));
+   ...
+}</xmp>
+      </div>
+      
+      <!-- ## Ajax ################################################################################ -->
+
+      <div id="tutorial-ajax" class="step" data-x="80000" data-y="30000">
+        <h1>Ajax</h1>
+
+<xmp>$.ajax({
+    type: "POST",
+    url: runtime.handlerUrl(element, 'mark_as_watched'),
+    data: JSON.stringify({watched: true}),
+    success: function(result) {
+        console.log(result);
+    }
+});</xmp>
+
+<xmp>class SimpleVideoBlock(XBlock):
+    [...]
+    
+    @XBlock.json_handler
+    def mark_as_watched(self, data, suffix=''):
+        if data.get('watched'):
+            self.watched += 1
+
+        return {'watched': self.watched}</xmp>
+      </div>
+
+      <!-- ## Scenarios ########################################################################### -->
+
+      <div id="tutorial-scenario" class="step" data-x="90000" data-y="30000">
+        <h1>Scenarios</h1>
+
+<xmp>@staticmethod
+def workbench_scenarios():
+    """A canned scenario for display in the workbench."""
+    return [
+        ("simple video",
+        """
+        <vertical_demo>
+            <simplevideo href="https://vimeo.com/46100581" maxwidth="800" />
+            <html_demo><div>Rate the video:</div></html_demo>
+            <thumbs />
+        </vertical_demo>
+        """)
+    ]</xmp>
+      </div>
+
+      <!-- ########################################################################################
+           ## Future                                                                             ##
+           ######################################################################################## -->
+
+      <div id="future" class="step" data-x="10000" data-y="0">
+        <h1>Future</h1>
+        <ul>
+          <li>TODO (Cale)</li>
+        </ul>
+      </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+        $('#impress').jmpress();
+      });
+    </script>
+
+  </body>
+</html>

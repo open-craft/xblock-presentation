@@ -1,0 +1,48 @@
+.step {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 2em;
+}
+
+.step > * {
+    position: absolute;
+}
+
+h1 {
+    top: -300px;
+    font-size: 3em;
+    font-weight: bold;
+    color: #dd7c49;
+}
+
+h2 {
+    top: -100px;
+    font-size: 1.5em;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+xmp {
+    font-size: 0.8em;
+    background-color: #fff;
+}
+
+#firstpage h1,
+#firstpage h2 {
+    right: 0;
+}
+
+#firstpage .authors {
+    bottom: -200px;
+}
+
+#tutorial img {
+    top: -100px;
+    left: -50px;
+    height: 450px;
+}
+
+#tutorial xmp {
+    right: -100px;
+}
