@@ -64,7 +64,7 @@
         <img src="tutorial/simplevideo_finished.png" class="example" />
         <img src="tutorial/black-curved-arrow.png" class="arrow" />
 
-<xmp class="prettyprint lang-xml"><vertical_demo>
+<xmp class="prettyprint"><vertical_demo>
   <simplevideo href="https://vimeo.com/46100581" maxwidth="800" />
   <html_demo>
     <div>Rate the video:</div>
@@ -80,7 +80,7 @@
       <div id="tutorial-installation" class="step" data-x="10000" data-y="30000">
         <h1>Installation</h1>
 
-<xmp>$ mkvirtualenv xblock-sdk
+<xmp class="prettyprint">$ mkvirtualenv xblock-sdk
 $ git clone https://github.com/edx/xblock-sdk.git
 $ cd xblock-sdk
 $ pip install -r requirements.txt
@@ -88,7 +88,8 @@ $ pip install -r test-requirements.txt
 $ pip install -e .
 $ python manage.py syncdb
 $ python manage.py runserver</xmp>
-        <img src="tutorial/workbench_home.png" />
+
+        <img src="tutorial/workbench_home.png" class="workbench" />
       </div>
 
       <!-- ## XBlock Creation ##################################################################### -->
@@ -96,7 +97,7 @@ $ python manage.py runserver</xmp>
       <div id="tutorial-new-xblock" class="step" data-x="20000" data-y="30000">
         <h1>XBlock Creation</h1>
 
-<xmp>$ ./xblock-sdk/script/startnew.py
+<xmp class="prettyprint">$ ./xblock-sdk/script/startnew.py
 This script will create a new XBlock project.
 
 You will be prompted for two pieces of information:
@@ -126,7 +127,7 @@ class_name (default is "MyXBlock")? SimpleVideoBlock</xmp>
 
         <div>setup.py:</div>
 
-<xmp>from setuptools import setup
+<xmp class="prettyprint">from setuptools import setup
 
 setup(
     name='xblock-simplevideo',
@@ -141,7 +142,7 @@ setup(
     }
 )</xmp>
 
-<xmp>pip install -e .
+<xmp class="prettyprint">pip install -e .
 (or in requirements.txt)</xmp>
       </div>
 
@@ -152,7 +153,7 @@ setup(
 
         <xmp><simplevideo href="https://vimeo.com/46100581" maxwidth="800" maxheight="450" /></xmp>
 
-<xmp>from xblock.core import XBlock
+<xmp class="prettyprint">from xblock.core import XBlock
 from xblock.fields import Scope, Integer, String
 
 class SimpleVideoBlock(XBlock):
@@ -171,7 +172,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-student-view" class="step" data-x="50000" data-y="30000">
         <h1>student_view()</h1>
 
-<xmp>def student_view(self, context):
+<xmp class="prettyprint">def student_view(self, context):
     provider, embed_code = self.get_embed_code_for_url(self.href)
 
     html_str = pkg_resources.resource_string(__name__, "static/html/simplevideo.html")
@@ -180,7 +181,7 @@ class SimpleVideoBlock(XBlock):
     return frag</xmp>
 
     <div>simplevideo/static/html/simplevideo.html:</div>
-<xmp><div class="simplevideo">
+<xmp class="prettyprint"><div class="simplevideo">
   {embed_code}
 </div></xmp>
       </div>
@@ -190,7 +191,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-css" class="step" data-x="60000" data-y="30000">
         <h1>CSS</h1>
 
-<xmp>def student_view(self, context):
+<xmp class="prettyprint">def student_view(self, context):
     [...]
     frag = Fragment(unicode(html_str).format(self=self, embed_code=embed_code))
 
@@ -203,7 +204,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-js" class="step" data-x="70000" data-y="30000">
         <h1>JS</h1>
 
-<xmp>def student_view(self, context):
+<xmp class="prettyprint">def student_view(self, context):
     [...]
     js_str = pkg_resources.resource_string(__name__, "static/js/lib/froogaloop.min.js")
     frag.add_javascript(unicode(js_str))
@@ -212,7 +213,7 @@ class SimpleVideoBlock(XBlock):
     frag.initialize_js('SimpleVideoBlock')</xmp>
 
         <div>simplevideo.js:</div>
-<xmp>function SimpleVideoBlock(runtime, element) {
+<xmp class="prettyprint">function SimpleVideoBlock(runtime, element) {
    var player = $f($('.simplevideo iframe'));
    ...
 }</xmp>
@@ -223,7 +224,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-ajax" class="step" data-x="80000" data-y="30000">
         <h1>Ajax</h1>
 
-<xmp>$.ajax({
+<xmp class="prettyprint">$.ajax({
     type: "POST",
     url: runtime.handlerUrl(element, 'mark_as_watched'),
     data: JSON.stringify({watched: true}),
@@ -232,7 +233,7 @@ class SimpleVideoBlock(XBlock):
     }
 });</xmp>
 
-<xmp>class SimpleVideoBlock(XBlock):
+<xmp class="prettyprint">class SimpleVideoBlock(XBlock):
     [...]
     
     @XBlock.json_handler
@@ -248,7 +249,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-scenario" class="step" data-x="90000" data-y="30000">
         <h1>Scenarios</h1>
 
-<xmp>@staticmethod
+<xmp class="prettyprint">@staticmethod
 def workbench_scenarios():
     """A canned scenario for display in the workbench."""
     return [

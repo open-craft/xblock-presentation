@@ -56,3 +56,13 @@ xmp {
     right: -200px;
     bottom: -300px;
 }
+
+#tutorial-installation xmp {
+    top: -100px;
+    left: -200px;
+}
+
+#tutorial-installation .workbench {
+    bottom: -350px;
+    right: -200px;
+}
