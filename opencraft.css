@@ -60,9 +60,41 @@ xmp {
 #tutorial-installation xmp {
     top: -100px;
     left: -200px;
+    background-color: #004040;
 }
 
 #tutorial-installation .workbench {
     bottom: -350px;
     right: -200px;
 }
+
+#tutorial-new-xblock xmp {
+    top: -150px;
+    left: -100px;
+    width: 1000px;
+    font-size: 0.7em;
+    background-color: #004040;
+}
+
+#tutorial-new-xblock span {
+    color: #fff;
+}
+
+#tutorial-registering .setuppy {
+    top: -100px;
+    left: -250px;
+}
+
+#tutorial-registering .and {
+    top: 10px;
+    right: 130px;
+    font-size: 5em;
+}
+
+#tutorial-registering .pip {
+    bottom: -100px;
+    right: -250px;
+    width: 300px;
+    background-color: #004040;
+}
+
