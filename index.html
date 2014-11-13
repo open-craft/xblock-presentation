@@ -9,9 +9,11 @@
 
     <link href="./vendor/impress.css" rel="stylesheet" type="text/css" />
     <link href="./opencraft.css" rel="stylesheet" type="text/css" />
+    <link href="./vendor/prettify/prettify.css" rel="stylesheet" type="text/css" />
     
     <script type="text/javascript" src="./vendor/jquery.min.js"></script>
     <script type="text/javascript" src="./vendor/jmpress.custom.js"></script>
+    <script type="text/javascript" src="./vendor/prettify/run_prettify.js?skin=sunburst"></script>
   </head>
 
   <body>
@@ -61,14 +63,13 @@
 
         <img src="tutorial/simplevideo_finished.png" />
 
-<xmp><vertical_demo>
+<xmp class="prettyprint lang-xml"><vertical_demo>
   <simplevideo href="https://vimeo.com/46100581" maxwidth="800" />
   <html_demo>
     <div>Rate the video:</div>
   </html_demo>
   <thumbs />
-</vertical_demo>
-</xmp>
+</vertical_demo></xmp>
 
         <div>https://antoviaque.org/docs/edx/xblock/tutorial.html</div>
       </div>
@@ -278,6 +279,10 @@ def workbench_scenarios():
     <script type="text/javascript">
       $(function() {
         $('#impress').jmpress();
+
+        $('.codemirror').each(function() {
+          CodeMirror.fromTextArea(this);
+        });
       });
     </script>
 
