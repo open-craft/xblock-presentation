@@ -151,9 +151,13 @@ setup(
       <div id="tutorial-fields" class="step" data-x="40000" data-y="30000">
         <h1>Fields</h1>
 
-        <xmp><simplevideo href="https://vimeo.com/46100581" maxwidth="800" maxheight="450" /></xmp>
+        <img src="tutorial/black-arrow.png" class="arrow" />
 
-<xmp class="prettyprint">from xblock.core import XBlock
+<xmp class="prettyprint xml"><simplevideo href="https://vimeo.com/46100581"
+             maxwidth="800"
+             maxheight="450" /></xmp>
+
+<xmp class="prettyprint python">from xblock.core import XBlock
 from xblock.fields import Scope, Integer, String
 
 class SimpleVideoBlock(XBlock):
@@ -172,7 +176,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-student-view" class="step" data-x="50000" data-y="30000">
         <h1>student_view()</h1>
 
-<xmp class="prettyprint">def student_view(self, context):
+<xmp class="prettyprint student-view">def student_view(self, context):
     provider, embed_code = self.get_embed_code_for_url(self.href)
 
     html_str = pkg_resources.resource_string(__name__, "static/html/simplevideo.html")
@@ -180,10 +184,12 @@ class SimpleVideoBlock(XBlock):
 
     return frag</xmp>
 
-    <div>simplevideo/static/html/simplevideo.html:</div>
-<xmp class="prettyprint"><div class="simplevideo">
+        <img src="tutorial/bubble.png" class="bubble" />
+
+<xmp class="prettyprint template"><div class="simplevideo">
   {embed_code}
 </div></xmp>
+
       </div>
       
       <!-- ## CSS ################################################################################# -->

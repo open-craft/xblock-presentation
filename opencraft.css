@@ -98,3 +98,41 @@ xmp {
     background-color: #004040;
 }
 
+#tutorial-fields .xml {
+    top: -150px;
+    left: -170px;
+    width: 1200px;
+}
+
+#tutorial-fields .arrow {
+    left: 380px;
+    top: -10px;
+    height: 68px;
+    width: 100px;
+}
+
+#tutorial-fields .python {
+    left: -170px;
+    width: 1200px;
+}
+
+#tutorial-student-view .student-view {
+    bottom: -200px;
+    left: -200px;
+    width: 1100px;
+}
+
+#tutorial-student-view .bubble {
+    top: -170px;
+    height: 300px;
+    width: 460px;
+    right: -200px;
+}
+
+#tutorial-student-view .template {
+    right: -170px;
+    width: 300px;
+    background-color: transparent;
+    top: -110px;
+}
+
