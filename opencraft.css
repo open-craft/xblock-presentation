@@ -25,7 +25,6 @@ ul {
 
 xmp {
     font-size: 0.8em;
-    background-color: #fff;
 }
 
 #firstpage h1,
@@ -37,12 +36,23 @@ xmp {
     bottom: -200px;
 }
 
-#tutorial img {
+#tutorial .example {
     top: -100px;
     left: -150px;
     height: 450px;
 }
 
-#tutorial xmp {
+#tutorial .arrow {
+    top: -70px;
     right: -100px;
+    height: 300px;
+}
+
+#tutorial .tutorial-url {
+    bottom: -350px;
+}
+
+#tutorial xmp {
+    right: -200px;
+    bottom: -300px;
 }
