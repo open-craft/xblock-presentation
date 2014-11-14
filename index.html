@@ -10,7 +10,7 @@
     <link href="./vendor/impress.css" rel="stylesheet" type="text/css" />
     <link href="./opencraft.css" rel="stylesheet" type="text/css" />
     <link href="./vendor/prettify/prettify.css" rel="stylesheet" type="text/css" />
-    
+
     <script type="text/javascript" src="./vendor/jquery.min.js"></script>
     <script type="text/javascript" src="./vendor/jmpress.custom.js"></script>
     <script type="text/javascript" src="./vendor/prettify/run_prettify.js?skin=sunburst"></script>
@@ -29,16 +29,26 @@
         <h2>Introduction and Tutorial</h2>
         <div class="authors">Cale Pennington (edX)<br />Xavier Antoviaque (OpenCraft)</div>
       </div>
-      
+
       <!-- ########################################################################################
            ## Intro                                                                              ##
            ######################################################################################## -->
 
-      <div id="intro" class="step" data-x="0" data-y="10000">
-        <h1>XBlock?</h1>
+      <div id="what" class="step" data-x="0" data-y="10000">
+        <h1>What is it?</h1>
         <ul>
-          <li>TODO (Cale)</li>
-          <li>Give a high-level, not-too-technical overview of the XBlock principles</li>
+          <li><strong>The</strong> way to add novel courseware components</li>
+          <li>"A webapp in a div"</li>
+          <li>State, Views, and Handlers</li>
+        </ul>
+      </div>
+
+      <div id="principles" class="step" data-x="0" data-y="15000">
+        <h1>Principles</h1>
+        <ul>
+          <li>Easy to author</li>
+          <li>One XBlock, many runtimes</li>
+          <li>Allow new, interesting behaviour</li>
         </ul>
       </div>
 
@@ -119,7 +129,7 @@ just delete the directory it created.
 short_name (default is "")? simplevideo
 class_name (default is "MyXBlock")? SimpleVideoBlock</xmp>
       </div>
-      
+
       <!-- ## Registering ######################################################################### -->
 
       <div id="tutorial-registering" class="step" data-x="30000" data-y="30000">
@@ -191,7 +201,7 @@ class SimpleVideoBlock(XBlock):
 </div></xmp>
 
       </div>
-      
+
       <!-- ## CSS ################################################################################# -->
 
       <div id="tutorial-css" class="step" data-x="60000" data-y="30000">
@@ -204,7 +214,7 @@ class SimpleVideoBlock(XBlock):
     css_str = pkg_resources.resource_string(__name__, "static/css/simplevideo.css")
     frag.add_css(unicode(css_str))</xmp>
       </div>
-      
+
       <!-- ## JS ################################################################################## -->
 
       <div id="tutorial-js" class="step" data-x="70000" data-y="30000">
@@ -224,7 +234,7 @@ class SimpleVideoBlock(XBlock):
    ...
 }</xmp>
       </div>
-      
+
       <!-- ## Ajax ################################################################################ -->
 
       <div id="tutorial-ajax" class="step" data-x="80000" data-y="30000">
@@ -241,7 +251,7 @@ class SimpleVideoBlock(XBlock):
 
 <xmp class="prettyprint">class SimpleVideoBlock(XBlock):
     [...]
-    
+
     @XBlock.json_handler
     def mark_as_watched(self, data, suffix=''):
         if data.get('watched'):
@@ -277,7 +287,10 @@ def workbench_scenarios():
       <div id="future" class="step" data-x="10000" data-y="0">
         <h1>Future</h1>
         <ul>
-          <li>TODO (Cale)</li>
+          <li>More XBlocks, More Places</li>
+          <li>XBlockAsides</li>
+          <li>Analytics</li>
+          <li>Remoting</li>
         </ul>
       </div>
 
