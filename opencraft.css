@@ -137,3 +137,62 @@ xmp {
     top: -110px;
 }
 
+#tutorial-css xmp {
+    top: -100px;
+    left: -50px;
+    width: 1000px;
+}
+
+#tutorial-js .student-view {
+    top: -100px;
+    left: -200px;
+    width: 1100px;
+}
+
+#tutorial-js .bubble {
+    height: 300px;
+    width: 700px;
+    right: -250px;
+    bottom: -300px;
+
+    -moz-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: FlipV;
+    -ms-filter: "FlipV";
+}
+
+#tutorial-js .js {
+    width: 600px;
+    right: -280px;
+    bottom: -270px;
+    background-color: transparent;
+}
+
+#tutorial-ajax .js {
+    top: -100px;
+    left: -250px;
+    width: 670px;
+}
+
+#tutorial-ajax .python {
+    top: -100px;
+    right: -200px;
+    width: 550px;
+    background-color: #004040;
+}
+
+#tutorial-scenario xmp {
+    top: -150px;
+    left: -200px;
+    background-color: #004040;
+    font-size: 0.7em;
+}
+
+#tutorial-scenario .workbench {
+    bottom: -300px;
+    right: -250px;
+    height: 400px;
+}
+

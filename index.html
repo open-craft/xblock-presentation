@@ -220,7 +220,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-js" class="step" data-x="70000" data-y="30000">
         <h1>JS</h1>
 
-<xmp class="prettyprint">def student_view(self, context):
+<xmp class="prettyprint student-view">def student_view(self, context):
     [...]
     js_str = pkg_resources.resource_string(__name__, "static/js/lib/froogaloop.min.js")
     frag.add_javascript(unicode(js_str))
@@ -228,8 +228,9 @@ class SimpleVideoBlock(XBlock):
     frag.add_javascript(unicode(js_str))
     frag.initialize_js('SimpleVideoBlock')</xmp>
 
-        <div>simplevideo.js:</div>
-<xmp class="prettyprint">function SimpleVideoBlock(runtime, element) {
+        <img src="tutorial/bubble.png" class="bubble" />
+
+<xmp class="prettyprint js">function SimpleVideoBlock(runtime, element) {
    var player = $f($('.simplevideo iframe'));
    ...
 }</xmp>
@@ -240,7 +241,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-ajax" class="step" data-x="80000" data-y="30000">
         <h1>Ajax</h1>
 
-<xmp class="prettyprint">$.ajax({
+<xmp class="prettyprint js">$.ajax({
     type: "POST",
     url: runtime.handlerUrl(element, 'mark_as_watched'),
     data: JSON.stringify({watched: true}),
@@ -249,7 +250,7 @@ class SimpleVideoBlock(XBlock):
     }
 });</xmp>
 
-<xmp class="prettyprint">class SimpleVideoBlock(XBlock):
+<xmp class="prettyprint python">class SimpleVideoBlock(XBlock):
     [...]
 
     @XBlock.json_handler
@@ -265,7 +266,7 @@ class SimpleVideoBlock(XBlock):
       <div id="tutorial-scenario" class="step" data-x="90000" data-y="30000">
         <h1>Scenarios</h1>
 
-<xmp class="prettyprint">@staticmethod
+<xmp class="prettyprint lang-python">@staticmethod
 def workbench_scenarios():
     """A canned scenario for display in the workbench."""
     return [
@@ -278,6 +279,8 @@ def workbench_scenarios():
         </vertical_demo>
         """)
     ]</xmp>
+
+        <img src="tutorial/simplevideo_finished.png" class="workbench" />
       </div>
 
       <!-- ########################################################################################
