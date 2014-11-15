@@ -43,6 +43,17 @@ xmp {
     height: 450px;
 }
 
+#examples h1 {
+    top: -350px;
+}
+
+#examples iframe {
+    top: -200px;
+    left: -150px;
+    height: 800px;
+    width: 1200px;
+}
+
 #tutorial .arrow {
     top: -70px;
     right: -100px;
