@@ -12,6 +12,7 @@ h1 {
     font-size: 3em;
     font-weight: bold;
     color: #dd7c49;
+    text-transform: uppercase;
 }
 
 h2 {
