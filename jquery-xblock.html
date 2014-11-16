@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>jquery-xblock - lightening talk</title>
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="./vendor/quicksand/quicksand.css" rel="stylesheet" type="text/css" />
+
+    <link href="./vendor/impress.css" rel="stylesheet" type="text/css" />
+    <link href="./opencraft.css" rel="stylesheet" type="text/css" />
+    <link href="./vendor/prettify/prettify.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="./vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendor/jquery.xblock.js"></script>
+    <script type="text/javascript" src="./vendor/jmpress.custom.js"></script>
+    <script type="text/javascript" src="./vendor/prettify/run_prettify.js?skin=sunburst"></script>
+  </head>
+
+  <body>
+
+    <div id="impress" class="impress-not-supported">
+
+      <div id="firstpage" class="step" data-x="0" data-y="0">
+        <h1>jquery-xblock</h1>
+        <h2>Loading XBlocks remotely</h2>
+        <div class="authors">Xavier Antoviaque (OpenCraft)</div>
+      </div>
+
+      <div id="examples" class="step" data-x="0" data-y="10000">
+        <h1>XBlocks</h1>
+
+        <iframe src="examples.html"></iframe>
+      </div>
+
+      <div id="remotely" class="step" data-x="0" data-y="20000">
+        <h1>Remotely</h1>
+
+        <div class="example">
+<xmp class="prettyprint">$('.example').xblock({
+    courseId: 'edX/DemoX/Demo_Course',
+    usageId: 'i4x:;_;_edX;_DemoX;_vertical;_2327f718cd0844f68d47d98e1afc18df',
+    sessionId: '6506131ce760e3958299546ec5fbeacf',
+    baseDomain: 'opencraft.com',
+    lmsSubDomain: 'sandbox',
+});</xmp>
+        </div>
+      </div>
+
+      <div id="limitations" class="step" data-x="0" data-y="30000">
+        <h1>Current limitations</h1>
+
+        <ul>
+          <li>Authentication</li>
+          <li>Same domain</li>
+        </ul>
+      </div>
+
+      <div id="more" class="step" data-x="20000" data-y="30000">
+        <h1>Try it!</h1>
+
+        <ul>
+          <li><a href="https://github.com/edx-solutions/jquery-xblock" target="_new">https://github.com/edx-solutions/jquery-xblock</a></li>
+          <li><a href="https://github.com/edx/edx-platform/pull/2968" target="_new">https://github.com/edx/edx-platform/pull/2968</a></li>
+          <li><a href="mailto:xavier@opencraft.com" target="_new">xavier@opencraft.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+        $('#impress').jmpress();
+
+        $('.codemirror').each(function() {
+          CodeMirror.fromTextArea(this);
+        });
+      });
+    </script>
+
+  </body>
+</html>
