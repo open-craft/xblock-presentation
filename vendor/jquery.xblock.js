@@ -56,7 +56,7 @@
                                  // (eg: `example.com`, defaults to current domain)
             lmsSubDomain: 'lms', // The subdomain part for the LMS (eg, `lms` for `lms.example.com`)
             lmsSecureURL: false, // Is the LMS on HTTPS?
-            useCurrentHost: false, // set to true to load xblock using the current location.hostnam
+            useCurrentHost: true, // set to true to load xblock using the current location.hostnam
             disableGlobalOptions: false, // set to true to disable the global_options behavior.
             data: {}              // additional data to send to student_view. send as GET parameters
         },
@@ -231,7 +231,7 @@
 
         getLmsDomain: function(options) {
             if (options.useCurrentHost) {
-                return this.location.hostname + ':' + this.location.port;
+                return 'sandbox.' + this.location.hostname + ':' + this.location.port;
             }
             else {
                 return options.lmsSubDomain + '.' + options.baseDomain;

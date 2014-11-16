@@ -207,3 +207,25 @@ xmp {
     height: 400px;
 }
 
+
+/* jquery-xblock */
+
+#remotely h1 {
+    top: -350px;
+}
+#remotely .example {
+    top: -200px;
+}
+#remotely .studio-view,
+#remotely .problem-header,
+#remotely .title1 {
+    display: none;
+}
+#remotely .xblock--drag-and-drop .drag-container,
+#remotely .xblock--drag-and-drop {
+    background-color: transparent;
+}
+#limitations h1 {
+    width: 1200px;
+    left: -100px;
+}
