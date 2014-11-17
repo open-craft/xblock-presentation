@@ -37,6 +37,27 @@ xmp {
     bottom: -200px;
 }
 
+#principles, #examples, #what, #what_2 {
+    font-size: 3em;
+}
+
+#principles h1, #examples h1, #what h1, #what_2 h1 {
+    font-size: 2em;
+}
+
+#future {
+    font-size: 3em;
+}
+
+#future h1 {
+    font-size: 2em;
+}
+
+#courseware .example {
+    top: -100px;
+    height: 600px;
+}
+
 #tutorial .example {
     top: -100px;
     left: -150px;
