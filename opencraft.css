@@ -90,6 +90,27 @@ xmp {
     bottom: -300px;
 }
 
+#tutorial-overview .schema {
+    height: 600px;
+    top: -180px;
+}
+
+#tutorial-overview .lms {
+    top: -150px;
+    right: 300px;
+}
+
+#tutorial-overview .fragment {
+    top: -55px;
+    left: 43px;
+    font-size: 0.8em;
+}
+
+#tutorial-overview .ajax {
+    top: -20px;
+    right: 420px;
+}
+
 #tutorial-installation xmp {
     top: -100px;
     left: -200px;
