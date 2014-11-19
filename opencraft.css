@@ -257,6 +257,8 @@ xmp {
 }
 #remotely .example {
     top: -200px;
+    left: -100px;
+    width: 1000px;
 }
 #remotely .studio-view,
 #remotely .problem-header,
